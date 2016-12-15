@@ -18,8 +18,13 @@ def donuts(count):
     >>> donuts(99)
     'Number of donuts: many'
     """
-    raise NotImplementedError
+    if count < 10:
+        return "Number of donuts: %x" % count
+    else:
+        return 'Number of donuts: many'
 
+print donuts(3)
+print donuts(11)
 
 def both_ends(s):
     """
@@ -37,7 +42,13 @@ def both_ends(s):
     >>> both_ends('xyz')
     'xyyz'
     """
-    raise NotImplementedError
+    if len(s) <= 2:
+        return ""
+    else:
+        return s[:2] + s[-2:]
+
+print both_ends("spring")
+print both_ends("a")
 
 
 def fix_start(s):
@@ -56,7 +67,10 @@ def fix_start(s):
     >>> fix_start('donut')
     'donut'
     """
-    raise NotImplementedError
+    return s[0] + s[1:].replace(s[0],'*')
+
+print fix_start('babble')
+print fix_start('aardvark')
 
 
 def mix_up(a, b):
@@ -74,7 +88,10 @@ def mix_up(a, b):
     >>> mix_up('pezzy', 'firm')
     'fizzy perm'
     """
-    raise NotImplementedError
+    return b[:2] + a[2:] + ' ' + a[:2] + b[2:]
+
+print mix_up('mix', 'pod')
+print mix_up('dog', 'dinner')
 
 
 def verbing(s):
@@ -91,7 +108,16 @@ def verbing(s):
     >>> verbing('do')
     'do'
     """
-    raise NotImplementedError
+    if len(s) >= 3 and s[-3:] != "ing":
+        return s + "ing"
+    elif len(s) >= 3:
+        return  s + "ly"
+    else:
+        return s
+
+print verbing('hail')
+print verbing('swiming')
+print verbing('do')
 
 
 def not_bad(s):
