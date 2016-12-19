@@ -1,6 +1,4 @@
-# Based on materials copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0
-
+import re
 
 def donuts(count):
     """
@@ -137,7 +135,15 @@ def not_bad(s):
     >>> not_bad("It's bad yet not")
     "It's bad yet not"
     """
-    raise NotImplementedError
+    match = re.search(r'not\s\w+\sbad', s)
+    if match:                      
+        new_s = s.replace(match.group(), 'good')
+        return new_s
+    else:
+        return s
+
+print not_bad('This movie is not so bad')
+print not_bad("It's bad yet not")
 
 
 def front_back(a, b):
@@ -156,4 +162,7 @@ def front_back(a, b):
     >>> front_back('Kitten', 'Donut')
     'KitDontenut'
     """
-    raise NotImplementedError
+    return a[:(len(a)/2)] + b[:(len(b)/2)] + a[(len(a)/2):] + b[(len(b)/2):]
+
+print front_back('abcd', 'xy')
+print front_back('Kitten', 'Donut')
